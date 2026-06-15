@@ -21,6 +21,7 @@ import analyticsRoutes from './features/analytics/routes.js';
 import { v4 as uuid } from 'uuid';
 
 async function main() {
+  console.log('[STARTUP] Starting XENO Server...');
   // Initialize database
   await initDatabase();
   await seedDatabase();
@@ -108,8 +109,8 @@ async function main() {
   setupSocketIO(httpServer);
 
   // Start server
-  httpServer.listen(config.port, () => {
-    console.log(`\n🚀 XENO Server running on http://localhost:${config.port}`);
+  httpServer.listen(config.port, '0.0.0.0', () => {
+    console.log(`\n🚀 XENO Server running on http://0.0.0.0:${config.port}`);
     console.log(`📡 WebSocket ready`);
     console.log(`🤖 AI Mode: ${config.geminiApiKey ? 'Gemini' : 'Mock'}`);
     console.log(`🔗 Channel Service: ${config.channelServiceUrl}\n`);
