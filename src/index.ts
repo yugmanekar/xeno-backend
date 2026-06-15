@@ -29,7 +29,7 @@ async function main() {
   const httpServer = createServer(app);
 
   // Middleware
-  app.use(cors({ origin: config.frontendUrl, credentials: true }));
+  app.use(cors({ origin: true, credentials: true }));
   app.use(express.json({ limit: '10mb' }));
   app.use(requestLogger);
   app.use(rateLimiter(200, 60000));
